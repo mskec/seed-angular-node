@@ -1,0 +1,12 @@
+{
+  "host": {
+    "port": 1337
+  },
+  "mongo": {
+    "address": "mongodb://127.0.0.1:27017/",
+    "database": "seed-angular-node"
+  },
+  "log": {
+    "access_log": "logs/access"
+  }
+}
