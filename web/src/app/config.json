@@ -1,0 +1,14 @@
+{
+  "production": {
+    "Env": {
+      "name": "production",
+      "debugLog": false
+    }
+  },
+  "development": {
+    "Env": {
+      "name": "development",
+      "debugLog": true
+    }
+  }
+}

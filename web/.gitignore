@@ -1,0 +1,13 @@
+
+# gulp tmp folders
+dist
+.tmp
+
+# auto generated file
+src/app/index.constants.js
+
+### Bower ###
+bower_components
+.bower-cache
+.bower-registry
+.bower-tmp
