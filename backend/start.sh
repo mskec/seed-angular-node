@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
 echo "Starting backend server..." &&
-node src/www.js
+node_modules/nodemon/bin/nodemon.js src/www.js

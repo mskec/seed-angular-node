@@ -27,6 +27,7 @@ exports.wiredep = {
 };
 
 exports.appName = 'seed-angular';
+exports.BACKEND_URL = 'http://localhost:1337';
 
 /**
  *  Common implementation for an error handler of a Gulp plugin

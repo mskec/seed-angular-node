@@ -16,11 +16,12 @@ function productionHandler(err, res) {
 
 
 module.exports = function(app) {
-  return function(err, req, res) {
-    if (app.get('env') === 'development') {
-      developmentHandler(err, res);
-    } else {
+  // Note: Do not remove next param!
+  return function(err, req, res, next) {
+    if (app.get('env') === 'production') {
       productionHandler(err, res);
+    } else {
+      developmentHandler(err, res);
     }
   };
 };
