@@ -4,6 +4,7 @@
   "description": "",
   "main": " ",
   "scripts": {
+    "start": "gulp serve",
     "postinstall": "bower install && gulp build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

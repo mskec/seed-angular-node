@@ -14,7 +14,7 @@ module.exports = function(app) {
     {
       colorize: true,
       timestamp: function() {
-        return app.get('env') === 'development' ? moment().format('HH:mm:ss.SSS') : moment().toISOString();
+        return app.get('env') === 'production' ? moment().toISOString() : moment().format('HH:mm:ss.SSS');
       }
     }
   );

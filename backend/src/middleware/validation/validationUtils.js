@@ -30,6 +30,12 @@ exports.is = function(objectForTesting1, objectForTesting2, errorMessage) {
   }
 };
 
+exports.isArray = function(object, errorMessage) {
+  if (!Array.isArray(object)) {
+    throw new Error(errorMessage || object + ' is not array.');
+  }
+};
+
 exports.isNumberGreaterThanZero = function(number, errorMessage) {
   if (typeof number !== 'number' || number < 0) {
     throw new Error(errorMessage || number + ' is not a number greater than zero.');
@@ -42,9 +48,33 @@ exports.isNumber = function (number, errorMessage) {
   }
 };
 
+exports.isDate = function(dateStr, errorMessage) {
+  if (!validator.isDate(dateStr)) {
+    throw new Error(errorMessage || dateStr + 'is not a date.');
+  }
+};
+
+exports.isBefore = function(date1, date2, errorMessage) {
+  if (!validator.isBefore(date1, date2)) {
+    throw new Error(errorMessage || date1 + ' is not before ' + date2);
+  }
+};
+
+exports.isNotInPast = function(date1, errorMessage) {
+  if (!validator.isBefore(date1)) {
+    throw new Error(errorMessage || date1 + ' is in the past.');
+  }
+};
+
 exports.isIn = function(object, arrayOfObjects, errorMessage) {
   if (validator.isIn(object, arrayOfObjects) === false) {
     throw new Error(errorMessage || 'Object is not part of the array!');
+  }
+};
+
+exports.isInRange = function(string, min, max, errorMessage) {
+  if (!validator.isLength(string, min, max)) {
+    throw new Error(errorMessage || string + ' is not in range [' + min + ', ' + max + ']' );
   }
 };
 
