@@ -1,5 +1,5 @@
-var validationUtils = require('./validationUtils');
+var validationUtils = require('./validation-utils');
 
-exports.basic = function(req, res) {
+exports.basic = function(req) {
   //
 };

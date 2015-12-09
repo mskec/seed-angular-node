@@ -1,4 +1,4 @@
-var httpCodes = require('../utils/httpCodes');
+var httpCodes = require('../utils/http-codes');
 
 
 // catch 404 and forward to error handler

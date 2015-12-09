@@ -1,4 +1,4 @@
-var httpCodes = require('../utils/httpCodes');
+var httpCodes = require('../utils/http-codes');
 
 
 // development error handler, will print stacktrace
@@ -14,14 +14,15 @@ function productionHandler(err, res) {
   res.send({message: err.message, error: {}});
 }
 
+exports.res = function(err, res) {
+  if (process.env.NODE_ENV === 'production') {
+    productionHandler(err, res);
+  } else {
+    developmentHandler(err, res);
+  }
+};
 
-module.exports = function(app) {
-  // Note: Do not remove next param!
-  return function(err, req, res, next) {
-    if (app.get('env') === 'production') {
-      productionHandler(err, res);
-    } else {
-      developmentHandler(err, res);
-    }
-  };
+// Note: Do not remove next param!
+exports.use = function(err, req, res, next) {
+  exports.res(err, res);
 };

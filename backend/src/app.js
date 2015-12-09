@@ -1,7 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 
-require('./utils/builtinsExtension');
+require('./utils/builtins-extension');
 
 var app = express();
 
@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 // Routers
 app.use('/', require('./routes/user'));
 
-app.use(require('./middleware/404handler'));
-app.use(require('./middleware/errorHandler')(app));
+app.use(require('./middleware/404-handler'));
+app.use(require('./middleware/error-handler').use);
 
 module.exports = app;
