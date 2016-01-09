@@ -9,7 +9,7 @@
   function HttpUtilities($log, $http, $q) {
     var httpUtilities = {};
 
-    httpUtilities.get = function(url) {
+    httpUtilities.get = (url) => {
       var deferred = $q.defer();
 
       $http.get(url)
@@ -24,7 +24,7 @@
       return deferred.promise;
     };
 
-    httpUtilities.post = function (url, data) {
+    httpUtilities.post = (url, data) => {
       var deferred = $q.defer();
 
       $http.post(url, data)

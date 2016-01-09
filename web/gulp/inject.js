@@ -9,6 +9,7 @@ var $ = require('gulp-load-plugins')();
 var wiredep = require('wiredep').stream;
 var _ = require('lodash');
 
+
 gulp.task('inject', ['scripts', 'styles', 'constants'], function () {
   var injectStyles = gulp.src([
     path.join(conf.paths.tmp, '/serve/app/**/*.css'),
@@ -20,7 +21,8 @@ gulp.task('inject', ['scripts', 'styles', 'constants'], function () {
     path.join(conf.paths.src, '/app/**/*.js'),
     path.join(conf.paths.tmp, '/serve/index.constants.js')
   ])
-  .pipe($.angularFilesort()).on('error', conf.errorHandler('AngularFilesort'));
+    .pipe($.babel({presets: ['es2015']}))
+    .pipe($.angularFilesort()).on('error', conf.errorHandler('AngularFilesort'));
 
   var injectOptions = {
     ignorePath: [conf.paths.src, path.join(conf.paths.tmp, '/serve')],

@@ -25,7 +25,7 @@ exports.paths = {
 exports.wiredep = {
   directory: 'bower_components'
 };
-
+exports.minify = (process.env['MINIFY'] === 'true') || (process.env['NODE_ENV'] === 'production');
 exports.appName = 'seed-angular';
 exports.BACKEND_URL = 'http://localhost:1337';
 

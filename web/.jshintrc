@@ -1,4 +1,5 @@
 {
+  "esnext": true,
   "strict": true,
   "bitwise": true,
   "curly": true,
