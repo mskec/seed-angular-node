@@ -6,10 +6,8 @@
     .module('seed-angular')
     .config(AppConfig);
 
-  function AppConfig(Env, $mdThemingProvider, $logProvider) {
+  function AppConfig(Env, $logProvider) {
     $logProvider.debugEnabled(Env.debugLog);
-
-    $mdThemingProvider.theme('default').primaryPalette('light-blue');
   }
 
 })();
