@@ -1,6 +1,6 @@
-var mongoose = require('mongoose');
-var mongooseUtilities = require('mongoose-utilities');
-var BPromise = require('bluebird');
+import mongoose from 'mongoose';
+import mongooseUtilities from 'mongoose-utilities';
+import BPromise from 'bluebird';
 
 
 var UserSchema = new mongoose.Schema({

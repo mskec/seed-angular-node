@@ -1,4 +1,4 @@
-var validationUtils = require('./validation-utils');
+import validationUtils from './validation-utils';
 
 exports.basic = function(req) {
   //

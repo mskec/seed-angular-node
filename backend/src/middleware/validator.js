@@ -1,4 +1,4 @@
-var httpCodes = require('../utils/http-codes');
+import httpCodes from '../utils/http-codes';
 
 module.exports = function(validationType) {
   return function(validationMethod) {

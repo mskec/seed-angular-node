@@ -1,10 +1,10 @@
-var path = require('path');
-var httpLogger = require('morgan');
-var winston = require('winston');
-var FileStreamRotator = require('file-stream-rotator');
-var moment = require('moment');
-var config = require('config');
-var mkdirp = require('mkdirp');
+import path from 'path';
+import httpLogger from 'morgan';
+import winston from 'winston';
+import FileStreamRotator from 'file-stream-rotator';
+import moment from 'moment';
+import config from 'config';
+import mkdirp from 'mkdirp';
 
 
 module.exports = function(app) {

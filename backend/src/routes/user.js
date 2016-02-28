@@ -1,9 +1,9 @@
-var router = require('express').Router();
-var logger = require('winston');
+const router = require('express').Router();
+import logger from 'winston';
 
-var validator = require('../middleware/validator')('user');
-var httpCodes = require('../utils/http-codes');
-var User = require('../models/user');
+const validator = require('../middleware/validator')('user');
+import httpCodes from '../utils/http-codes';
+import User from '../models/user';
 
 
 router.get('/api/user',

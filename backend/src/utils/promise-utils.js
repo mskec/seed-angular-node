@@ -1,4 +1,4 @@
-var errorHandler = require('./error-handler');
+import errorHandler from './error-handler';
 
 exports.handleError = function(res) {
   return function(err) {

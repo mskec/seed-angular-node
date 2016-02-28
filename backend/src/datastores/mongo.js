@@ -1,7 +1,7 @@
-var mongoose = require('mongoose');
-var logger = require('winston');
+import mongoose from 'mongoose';
+import logger from 'winston';
 
-var config = require('config');
+import config from 'config';
 
 
 exports.connect = function() {

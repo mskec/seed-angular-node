@@ -1,4 +1,4 @@
-var httpCodes = require('../utils/http-codes');
+import httpCodes from '../utils/http-codes';
 
 
 // development error handler, will print stacktrace

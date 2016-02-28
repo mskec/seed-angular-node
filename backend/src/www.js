@@ -1,9 +1,9 @@
 #!/usr/bin/env node
-var config = require('config');
-var logger = require('winston');
+import config from 'config';
+import logger from 'winston';
 
-var app = require('./app');
-var mongo = require('./datastores/mongo');
+import app from './app';
+import mongo from './datastores/mongo';
 
 
 app.set('port', config.get('host.port') || 3000);

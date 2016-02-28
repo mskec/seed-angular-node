@@ -1,7 +1,7 @@
-var express = require('express');
-var bodyParser = require('body-parser');
+import express from 'express';
+import bodyParser from 'body-parser';
 
-require('./utils/builtins-extension');
+import './utils/builtins-extension';
 
 var app = express();
 

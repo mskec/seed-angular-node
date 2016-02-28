@@ -1,4 +1,4 @@
-var validator = require('validator');
+import validator from 'validator';
 
 exports.notNull= function(objectForTesting, errorMessage) {
   if (validator.isNull(objectForTesting) === true) {
