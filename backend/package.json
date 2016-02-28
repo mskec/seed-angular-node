@@ -4,7 +4,8 @@
   "description": "",
   "main": "src/www.js",
   "scripts": {
-    "start": "nodemon src/www.js",
+    "start": "nodemon --exec node_modules/babel-cli/bin/babel-node.js --watch src src/www.js",
+    "build:production": "node_modules/babel-cli/bin/babel.js src --out-dir dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -24,6 +25,8 @@
     "winston": "^1.1.1"
   },
   "devDependencies": {
+    "babel-cli": "^6.5.1",
+    "babel-preset-node5": "^10.6.0",
     "nodemon": "^1.8.0"
   }
 }
