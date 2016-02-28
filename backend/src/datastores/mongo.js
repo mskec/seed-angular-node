@@ -1,8 +1,12 @@
 import mongoose from 'mongoose';
 import logger from 'winston';
+import BPromise from 'bluebird';
 
 import config from 'config';
 
+
+// Replacing default mongoose promise with bluebird
+mongoose.Promise = BPromise;
 
 exports.connect = function() {
   var mongoUrl = config.get('mongo.address') + config.get('mongo.database');

@@ -1,3 +1,4 @@
+import logger from 'winston';
 import httpCodes from '../utils/http-codes';
 
 
@@ -20,6 +21,8 @@ exports.res = function(err, res) {
   } else {
     developmentHandler(err, res);
   }
+
+  logger.error(err);
 };
 
 // Note: Do not remove next param!
