@@ -5,39 +5,44 @@ import BPromise from 'bluebird';
 import config from 'config';
 
 
+const DB_CONFIG = config.get('mongo');
+const LOG_PREFIX = 'MongoDB |';
+
 // Replacing default mongoose promise with bluebird
 mongoose.Promise = BPromise;
 
-exports.connect = function() {
-  var mongoUrl = config.get('mongo.address') + config.get('mongo.database');
+// Uncomment this when you want to debug mongoose. This is very useful for weird bugs :)
+//mongoose.set('debug', true);
 
-  mongoose.connect(mongoUrl, {server: {auto_reconnect: true }});
-  var connection = mongoose.connection;
+var db = mongoose.connection;
+var isConnecting = false;
 
-  // Define events
-  connection.on('connecting', function () {
-    logger.info('Connecting to mongo url', mongoUrl);
+function connect() {
+  isConnecting = true;
+  mongoose.connect(DB_CONFIG.address + DB_CONFIG.database, {}, (error) => {
+    if (error) {
+      mongoose.disconnect();
+      setTimeout(connect, 5000);
+    }
   });
+}
 
-  connection.on('error', function (error) {
-    logger.error('Error in mongo connection: ' + error);
-    mongoose.disconnect();
-  });
 
-  connection.on('connected', function () {
-    logger.info('Mongo connection established');
-  });
+db.on('open', () => {
+  logger.info(LOG_PREFIX, `connection opened to: ${DB_CONFIG.address}, db_name: ${DB_CONFIG.database}`);
+  isConnecting = false;
+});
 
-  connection.once('open', function () {
-    logger.info('Mongo connection opened');
-  });
+db.on('disconnected', () => {
+  logger.error(LOG_PREFIX, 'disconnected');
+  if (!isConnecting) {
+    connect();
+  }
+});
 
-  connection.on('reconnected', function () {
-    logger.info('Mongo reconnected');
-  });
+db.on('connecting', () => logger.info(LOG_PREFIX, 'connecting'));
+db.on('error', (error) => logger.error(LOG_PREFIX, error));
+db.on('close', () => logger.error(LOG_PREFIX, 'close'));
 
-  connection.on('disconnected', function () {
-    logger.info('Mongo disconnected');
-    mongoose.connect(config.MONGO_CONNECTION);
-  });
-};
+
+exports.connect = connect;

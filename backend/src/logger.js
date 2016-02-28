@@ -12,7 +12,7 @@ module.exports = function(app) {
   winston.add(
     winston.transports.Console,
     {
-      colorize: true,
+      colorize: app.get('env') !== 'production',
       timestamp: function() {
         return app.get('env') === 'production' ? moment().toISOString() : moment().format('HH:mm:ss.SSS');
       }
